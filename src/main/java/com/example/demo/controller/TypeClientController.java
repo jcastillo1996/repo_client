@@ -13,32 +13,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.model.Client;
-import com.example.demo.service.impl.ClientServiceImpl;
-//import com.example.demo.service.impl.SequenceGeneratorServiceImpl;
+import com.example.demo.model.TypeClient;
+import com.example.demo.service.impl.TypeClientServiceImpl;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping(path = "/api_client")
-public class ClienteController {
-
+@RequestMapping(path = "/api_clientType")
+public class TypeClientController {
 	@Autowired
-	ClientServiceImpl service;
+	TypeClientServiceImpl service;
 
 	// @Autowired
 	// SequenceGeneratorServiceImpl sequence;
 
 	@GetMapping
-	public Flux<Client> findAll() {
+	public Flux<TypeClient> findAll() {
 
 		return service.findAll();
 	}
 
 	@GetMapping("/{id}")
-	public Mono<ResponseEntity<Client>> findById(@PathVariable(name = "id") Long id) {
-		return service.findById(id).map(client -> new ResponseEntity<>(client, HttpStatus.OK))
+	public Mono<ResponseEntity<TypeClient>> findById(@PathVariable(name = "id") Long id) {
+		return service.findById(id).map(type -> new ResponseEntity<>(type, HttpStatus.OK))
 				.defaultIfEmpty(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 	}
 
@@ -50,15 +48,15 @@ public class ClienteController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Mono<Client> save(@RequestBody Client cliente) {
+	public Mono<TypeClient> save(@RequestBody TypeClient type) {
 
-		return service.save(cliente);
+		return service.save(type);
 	}
 
 	@PutMapping
-	public Mono<Client> update(@RequestBody(required = true) Client cliente) {
+	public Mono<TypeClient> update(@RequestBody(required = true) TypeClient type) {
 
-		return service.update(cliente);
+		return service.update(type);
 	}
 
 	@DeleteMapping("/{id}")

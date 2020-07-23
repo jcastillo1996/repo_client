@@ -16,7 +16,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
-import com.example.demo.controller.ClienteController;
+import com.example.demo.controller.ClientController;
 import com.example.demo.model.Client;
 import com.example.demo.service.impl.ClientServiceImpl;
 
@@ -24,7 +24,7 @@ import reactor.core.publisher.Mono;
 
 @RunWith(SpringRunner.class)
 @ExtendWith(SpringExtension.class)
-@WebFluxTest(controllers = ClienteController.class)
+@WebFluxTest(controllers = ClientController.class)
 class ClientControllerTest {
 
 	@MockBean

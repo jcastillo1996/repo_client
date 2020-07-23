@@ -8,8 +8,8 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 public class Client implements Serializable {
 	private static final long serialVersionUID = -7002717789008112626L;
 	@Transient
-    public static final String SEQUENCE_NAME = "client_sequence";
+	public static final String SEQUENCE_NAME = "client_sequence";
 	@Id
 	public Long idClient;
 
@@ -39,7 +39,8 @@ public class Client implements Serializable {
 
 	public String lastName2;
 
-	public LocalDate birthDate=LocalDate.now();
+	public LocalDate birthDate = LocalDate.now();
 
-	
+	public TypeClient typeClient;
+
 }
