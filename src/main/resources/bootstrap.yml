@@ -1,4 +1,4 @@
 spring:
   application:
-    name: client-micro 
+    name: client-micro
   cloud:    config:      uri: http://localhost:8085

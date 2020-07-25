@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.example.demo.model.Client;
 import com.example.demo.service.impl.ClientServiceImpl;
@@ -37,9 +38,8 @@ public class ClientController {
 	}
 
 	@GetMapping("/{id}")
-	public Mono<ResponseEntity<Client>> findById(@PathVariable(name = "id") Long id) {
-		return service.findById(id).map(client -> new ResponseEntity<>(client, HttpStatus.OK))
-				.defaultIfEmpty(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+	public Mono<Client> findById(@PathVariable(name = "id") Long id) {
+		return service.findById(id).switchIfEmpty(Mono.error(new ResponseStatusException(HttpStatus.NOT_FOUND,"CLIENT NOT FOUND ID: "+id)));
 	}
 
 	@GetMapping(value = "/unauthorized")
