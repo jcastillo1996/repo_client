@@ -25,9 +25,6 @@ public class TypeClientController {
 	@Autowired
 	TypeClientServiceImpl service;
 
-	// @Autowired
-	// SequenceGeneratorServiceImpl sequence;
-
 	@GetMapping
 	public Flux<TypeClient> findAll() {
 

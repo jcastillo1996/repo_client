@@ -1,12 +1,9 @@
 package com.example.demo.client;
 
-import java.time.LocalDate;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.example.demo.model.Client;
 import com.example.demo.service.impl.ClientServiceImpl;
 
 @SpringBootTest

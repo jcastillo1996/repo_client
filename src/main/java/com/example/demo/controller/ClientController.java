@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,12 +39,6 @@ public class ClientController {
 	@GetMapping("/{id}")
 	public Mono<Client> findById(@PathVariable(name = "id") Long id) {
 		return service.findById(id).switchIfEmpty(Mono.error(new ResponseStatusException(HttpStatus.NOT_FOUND,"CLIENT NOT FOUND ID: "+id)));
-	}
-
-	@GetMapping(value = "/unauthorized")
-	public ResponseEntity<Mono<String>> unathorized() {
-		return ResponseEntity.status(HttpStatus.CREATED).header("X-Reason", "user-invalid")
-				.body(Mono.just("unauthorized"));
 	}
 
 	@PostMapping

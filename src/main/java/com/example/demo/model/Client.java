@@ -41,7 +41,7 @@ public class Client implements Serializable {
 
 	public String lastName2;
 
-	public LocalDate birthDate = LocalDate.now();
+	public LocalDate birthDate;
 
 	public TypeClient typeClient;
 
